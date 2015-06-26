@@ -32,7 +32,7 @@ command -v ruby >/dev/null || {
   cd /tmp
   wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-${RUBY}.tar.gz
   echo "${SHA256}  ruby-${RUBY}.tar.gz" | sha256sum -c -
-  tar xf ruby-${RUBY}.tar.gz
+  tar --no-same-owner -xf ruby-${RUBY}.tar.gz
 
   cd ruby-${RUBY}/
   export CFLAGS=-fPIC # https://www.ruby-forum.com/topic/6654701
