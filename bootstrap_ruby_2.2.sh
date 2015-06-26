@@ -44,6 +44,8 @@ command -v ruby >/dev/null || {
   rm -rf /tmp/ruby-${RUBY}
   cd
 
+  ln -sfv /usr/local/bin/ruby /bin/ruby
+
   ruby -v
 }
 
