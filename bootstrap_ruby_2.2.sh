@@ -3,8 +3,8 @@
 # Download, configure and install Ruby and Bundler on a Debian-family or Redhat-family fresh system
 # https://github.com/infertux/ruby-bootstrap
 
-RUBY="2.2.2"
-SHA256="5ffc0f317e429e6b29d4a98ac521c3ce65481bfd22a8cf845fa02a7b113d9b44"
+RUBY="2.2.3"
+SHA256="df795f2f99860745a416092a4004b016ccf77e8b82dec956b120f18bdc71edce"
 
 [ "$1" = "--force" ] && FORCE=1 || FORCE=""
 
