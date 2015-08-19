@@ -1,10 +1,14 @@
-#!/bin/bash -eu
+#!/bin/bash -e
 
 # Download, configure and install Ruby and Bundler on a Debian-family or Redhat-family fresh system
 # https://github.com/infertux/ruby-bootstrap
 
 RUBY="2.2.2"
 SHA256="5ffc0f317e429e6b29d4a98ac521c3ce65481bfd22a8cf845fa02a7b113d9b44"
+
+[ "$1" = "--force" ] && FORCE=1 || FORCE=""
+
+set -u
 
 # This runs as root on the server
 [ $UID -eq 0 ]
@@ -16,8 +20,8 @@ set +u
 }
 set -u
 
-# Install Ruby and Bundler if we are on a vanilla system
-command -v ruby >/dev/null || {
+# Install Ruby and Bundler if they are missing or the force flag is set
+if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   # wget: to fetch Ruby and pretty useful anyway
   # gcc make: to compile Ruby
   # zlib1g-dev libssl-dev libreadline-dev: libraries for Ruby
@@ -47,13 +51,13 @@ command -v ruby >/dev/null || {
   ln -sfv /usr/local/bin/ruby /bin/ruby
 
   ruby -v
-}
+fi
 
-command -v bundle >/dev/null || {
+if [ -n "$FORCE" ] || ! command -v bundle >/dev/null; then
   gem install bundler --verbose --no-document
 
   bundle -v
-}
+fi
 
 echo "All good to go, happy Rubying!"
 
