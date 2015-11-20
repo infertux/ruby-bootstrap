@@ -1,4 +1,6 @@
-Simple Bash script to download, configure and install Ruby and Bundler on a Debian-family or Redhat-family fresh system
+# ruby-bootstrap
+
+These are very simple Bash scripts to download, configure and install Ruby from source along with Bundler on Debian-family or Redhat-family systems.
 
 You can use these links to always point to the latest release:
 

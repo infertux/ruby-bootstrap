@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-# Download, configure and install Ruby and Bundler on a Debian-family or Redhat-family fresh system
+# Download, configure and install Ruby and Bundler
 # https://github.com/infertux/ruby-bootstrap
 
 RUBY="2.2.3"
