@@ -3,8 +3,8 @@
 # Download, configure and install Ruby and Bundler
 # https://github.com/infertux/ruby-bootstrap
 
-VERSION="2.3.0"
-SHA256="ba5ba60e5f1aa21b4ef8e9bf35b9ddb57286cb546aac4b5a28c71f459467e507"
+VERSION="2.3.1"
+SHA256="b87c738cb2032bf4920fef8e3864dc5cf8eae9d89d8d523ce0236945c5797dcd"
 
 [ "$1" = "--force" ] && FORCE=1 || FORCE=""
 
@@ -41,7 +41,7 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   pushd ruby-${VERSION}
   ./configure --disable-install-doc
   cpus=$(grep -c processor /proc/cpuinfo)
-  make -j $cpus
+  make -j "$cpus"
   make install
   popd
 
