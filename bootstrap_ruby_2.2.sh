@@ -23,8 +23,8 @@ set -u
 # Install Ruby and Bundler if they are missing or the force flag is set
 if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   # wget: to fetch Ruby and pretty useful anyway
-  # gcc make: to compile Ruby
-  # zlib1g-dev libssl-dev libreadline-dev: libraries for Ruby
+  # gcc & make: to compile Ruby
+  # various libs: libraries for Ruby
 
   if [ -f /etc/debian_version ]; then
     apt-get update
@@ -34,22 +34,21 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   fi
 
   cd /tmp
-  wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-${RUBY}.tar.gz
-  echo "${SHA256}  ruby-${RUBY}.tar.gz" | sha256sum -c -
-  tar --no-same-owner -xf ruby-${RUBY}.tar.gz
+  wget http://cache.ruby-lang.org/pub/ruby/2.2/ruby-${VERSION}.tar.gz
+  echo "${SHA256}  ruby-${VERSION}.tar.gz" | sha256sum -c -
+  tar --no-same-owner -xf ruby-${VERSION}.tar.gz
 
-  cd ruby-${RUBY}/
+  pushd ruby-${VERSION}
   export CFLAGS=-fPIC # https://www.ruby-forum.com/topic/6654701
   ./configure --disable-install-doc
   cpus=$(grep -c processor /proc/cpuinfo)
-  make -j $cpus
+  make -j "$cpus"
   make install
+  popd
 
-  rm -rf /tmp/ruby-${RUBY}
-  cd
+  rm -rf ruby-${VERSION}.tar.gz ruby-${VERSION}
 
   ln -sfv /usr/local/bin/ruby /bin/ruby
-
   ruby -v
 fi
 
