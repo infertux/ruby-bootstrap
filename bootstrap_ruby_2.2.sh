@@ -49,7 +49,10 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   rm -rf ruby-${VERSION}.tar.gz ruby-${VERSION}
 
   ln -sfv /usr/local/bin/ruby /bin/ruby
+  ln -sfv /usr/local/bin/gem /bin/gem
+
   ruby -v
+  gem -v
 fi
 
 if [ -n "$FORCE" ] || ! command -v bundle >/dev/null; then
@@ -59,4 +62,3 @@ if [ -n "$FORCE" ] || ! command -v bundle >/dev/null; then
 fi
 
 echo "All good to go, happy Rubying!"
-

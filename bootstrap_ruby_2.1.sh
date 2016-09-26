@@ -44,8 +44,10 @@ command -v ruby >/dev/null || {
   cd
 
   ln -sfv /usr/local/bin/ruby /bin/ruby
+  ln -sfv /usr/local/bin/gem /bin/gem
 
   ruby -v
+  gem -v
 }
 
 command -v bundle >/dev/null || {
@@ -55,4 +57,3 @@ command -v bundle >/dev/null || {
 }
 
 echo "All good to go, happy Rubying!"
-
