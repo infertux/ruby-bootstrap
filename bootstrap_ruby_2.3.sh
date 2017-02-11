@@ -10,15 +10,7 @@ SHA256="241408c8c555b258846368830a06146e4849a1d58dcaf6b14a3b6a73058115b7"
 
 set -u
 
-# This runs as root on the server
-[ $UID -eq 0 ]
-
-set +u
-[ -z "$TMUX" ] && {
-  echo "You might want to \`apt-get install tmux' and run $0 from there. Press CTRL-C to cancel and do this."
-  read
-}
-set -u
+[ $UID -eq 0 ] || { echo "Root required"; exit 1; }
 
 # Install Ruby and Bundler if they are missing or the force flag is set
 if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
@@ -28,9 +20,9 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
 
   if [ -f /etc/debian_version ]; then
     apt-get update
-    apt-get install wget gcc make zlib1g-dev libssl-dev libreadline-dev libffi-dev
+    apt-get -y install wget gcc make zlib1g-dev libssl-dev libreadline-dev libffi-dev
   elif [ -f /etc/redhat-release ]; then
-    yum install wget gcc make zlib-devel openssl-devel readline-devel
+    yum install -y wget gcc make zlib-devel openssl-devel readline-devel
   fi
 
   cd /tmp
@@ -55,7 +47,9 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
 fi
 
 if [ -n "$FORCE" ] || ! command -v bundle >/dev/null; then
-  gem install bundler --verbose --no-document
+  gem install bundler --no-document
+
+  ln -sfv /usr/local/bin/bundle /bin/bundle
 
   bundle -v
 fi

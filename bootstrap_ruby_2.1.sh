@@ -6,15 +6,7 @@
 RUBY="2.1.6"
 SHA256="1e1362ae7427c91fa53dc9c05aee4ee200e2d7d8970a891c5bd76bee28d28be4"
 
-# This runs as root on the server
-[ $UID -eq 0 ]
-
-set +u
-[ -z "$TMUX" ] && {
-  echo "You might want to \`apt-get install tmux' and run $0 from there. Press CTRL-C to cancel and do this."
-  read
-}
-set -u
+[ $UID -eq 0 ] || { echo "Root required"; exit 1; }
 
 # Install Ruby and Bundler if we are on a vanilla system
 command -v ruby >/dev/null || {
@@ -24,9 +16,9 @@ command -v ruby >/dev/null || {
 
   if [ -f /etc/debian_version ]; then
     apt-get update
-    apt-get install wget gcc make zlib1g-dev libssl-dev libreadline-dev libffi-dev
+    apt-get install -y wget gcc make zlib1g-dev libssl-dev libreadline-dev libffi-dev
   elif [ -f /etc/redhat-release ]; then
-    yum install wget gcc make zlib-devel openssl-devel readline-devel
+    yum install -y wget gcc make zlib-devel openssl-devel readline-devel
   fi
 
   cd /tmp
@@ -37,7 +29,7 @@ command -v ruby >/dev/null || {
   cd ruby-${RUBY}/
   ./configure --disable-install-doc
   cpus=$(grep -c processor /proc/cpuinfo)
-  make -j $cpus
+  make -j "$cpus"
   make install
 
   rm -rf /tmp/ruby-${RUBY}
@@ -51,7 +43,9 @@ command -v ruby >/dev/null || {
 }
 
 command -v bundle >/dev/null || {
-  gem install bundler --verbose --no-document
+  gem install bundler --no-document
+
+  ln -sfv /usr/local/bin/bundle /bin/bundle
 
   bundle -v
 }

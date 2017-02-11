@@ -1,0 +1,13 @@
+---
+driver:
+  name: docker
+
+provisioner:
+  name: shell
+  script: ./bootstrap_ruby_<%= ENV["KITCHEN_SCRIPT"] %>.sh
+
+platforms:
+  - name: <%= ENV["KITCHEN_PLATFORM"] %>
+
+suites:
+  - name: default
