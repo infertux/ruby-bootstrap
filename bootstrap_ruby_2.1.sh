@@ -3,8 +3,8 @@
 # Download, configure and install Ruby and Bundler
 # https://github.com/infertux/ruby-bootstrap
 
-RUBY="2.1.6"
-SHA256="1e1362ae7427c91fa53dc9c05aee4ee200e2d7d8970a891c5bd76bee28d28be4"
+RUBY="2.1.10"
+SHA256="fb2e454d7a5e5a39eb54db0ec666f53eeb6edc593d1d2b970ae4d150b831dd20"
 
 [ $UID -eq 0 ] || { echo "Root required"; exit 1; }
 
