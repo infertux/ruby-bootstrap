@@ -26,7 +26,7 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   fi
 
   cd /tmp
-  wget http://cache.ruby-lang.org/pub/ruby/2.4/ruby-${VERSION}.tar.gz
+  wget https://cache.ruby-lang.org/pub/ruby/${VERSION%.*}/ruby-${VERSION}.tar.gz
   echo "${SHA256}  ruby-${VERSION}.tar.gz" | sha256sum -c -
   tar --no-same-owner -xf ruby-${VERSION}.tar.gz
 

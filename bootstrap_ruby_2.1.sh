@@ -22,7 +22,7 @@ command -v ruby >/dev/null || {
   fi
 
   cd /tmp
-  wget http://cache.ruby-lang.org/pub/ruby/2.1/ruby-${RUBY}.tar.gz
+  wget https://cache.ruby-lang.org/pub/ruby/${VERSION%.*}/ruby-${VERSION}.tar.gz
   echo "${SHA256}  ruby-${RUBY}.tar.gz" | sha256sum -c -
   tar --no-same-owner -xf ruby-${RUBY}.tar.gz
 
