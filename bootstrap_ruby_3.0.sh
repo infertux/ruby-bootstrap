@@ -20,9 +20,9 @@ if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
 
   if [ -f /etc/debian_version ]; then
     apt-get update
-    apt-get install -y wget gcc make zlib1g-dev libssl-dev libreadline-dev libffi-dev
+    apt-get install -y wget gcc g++ make zlib1g-dev libssl-dev libreadline-dev libffi-dev
   elif [ -f /etc/redhat-release ]; then
-    yum install -y wget gcc make zlib-devel openssl-devel readline-devel
+    yum install -y wget gcc g++ make zlib-devel openssl-devel readline-devel
   fi
 
   cd /tmp

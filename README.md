@@ -1,6 +1,7 @@
 # ruby-bootstrap
 
-[![Build Status](https://travis-ci.org/infertux/ruby-bootstrap.svg?branch=master)](https://travis-ci.org/infertux/ruby-bootstrap)
+[![Funding](https://img.shields.io/liberapay/patrons/infertux.svg?logo=liberapay)](https://liberapay.com/infertux/donate)
+[![Build Status](https://github.com/infertux/ruby-bootstrap/actions/workflows/ci.yml/badge.svg)](https://github.com/infertux/ruby-bootstrap/actions)
 
 These are very simple self-contained Bash scripts to download, configure and install Ruby from source along with Bundler on Debian-family or Redhat-family systems.
 
