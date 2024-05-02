@@ -3,8 +3,8 @@
 # Download, configure and install Ruby and Bundler
 # https://github.com/infertux/ruby-bootstrap
 
-VERSION="3.1.4"
-SHA256="a3d55879a0dfab1d7141fdf10d22a07dbf8e5cdc4415da1bde06127d5cc3c7b6"
+VERSION="3.1.5"
+SHA256="3685c51eeee1352c31ea039706d71976f53d00ab6d77312de6aa1abaf5cda2c5"
 
 [ "$1" = "--force" ] && FORCE=1 || FORCE=""
 
