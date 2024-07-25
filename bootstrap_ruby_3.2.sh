@@ -1,22 +1,23 @@
-#!/bin/bash -e
+#!/bin/bash
 
 # Download, configure and install Ruby and Bundler
 # https://github.com/infertux/ruby-bootstrap
 
+set -euo pipefail
+
 VERSION="3.2.4"
 SHA256="c72b3c5c30482dca18b0f868c9075f3f47d8168eaf626d4e682ce5b59c858692"
 
-[ "$1" = "--force" ] && FORCE=1 || FORCE=""
-
-set -u
+[ "${1:-}" = "--force" ] && FORCE=1 || FORCE=""
 
 [ $UID -eq 0 ] || { echo "Root required"; exit 1; }
 
 # Install Ruby and Bundler if they are missing or the force flag is set
-if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
-  # wget: to fetch Ruby and pretty useful anyway
-  # gcc & make: to compile Ruby
-  # various libs: libraries for Ruby
+if [ -n "$FORCE" ] || ! command -v ruby > /dev/null; then
+  # Dependency list:
+  # - wget: to fetch Ruby and pretty useful anyway
+  # - gcc & make: to compile Ruby
+  # - various libs: libraries for Ruby
 
   if [ -f /etc/debian_version ]; then
     apt-get update

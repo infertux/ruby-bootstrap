@@ -9,9 +9,7 @@ You can use this link to always point to the latest release: https://raw.githubu
 
 ## Usage
 
-- `wget https://raw.githubusercontent.com/infertux/ruby-bootstrap/master/bootstrap_ruby_stable.sh`
-- `chmod +x bootstrap_ruby_stable.sh`
-- `sudo ./bootstrap_ruby_stable.sh`
+`wget https://raw.githubusercontent.com/infertux/ruby-bootstrap/master/bootstrap_ruby_stable.sh && bash ./bootstrap_ruby_stable.sh`
 
 ## License
 
