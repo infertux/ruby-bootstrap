@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        script: [ "3.2", "3.3", "stable" ]
+        script: [ "3.2", "3.3", "3.4", "stable" ]
         platform: [ "debian", "ubuntu" ]
     steps:
     - uses: actions/checkout@v3

@@ -5,8 +5,8 @@
 
 set -euo pipefail
 
-VERSION="3.3.4"
-SHA256="fe6a30f97d54e029768f2ddf4923699c416cdbc3a6e96db3e2d5716c7db96a34"
+VERSION="3.3.7"
+SHA256="9c37c3b12288c7aec20ca121ce76845be5bb5d77662a24919651aaf1d12c8628"
 
 [ "${1:-}" = "--force" ] && FORCE=1 || FORCE=""
 
