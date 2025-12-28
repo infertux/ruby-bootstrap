@@ -5,15 +5,18 @@
 
 set -euo pipefail
 
-VERSION="3.4.4"
-SHA256="a0597bfdf312e010efd1effaa8d7f1d7833146fdc17950caa8158ffa3dcbfa85"
+VERSION="3.4.8"
+SHA256="53c4ddad41fbb6189f1f5ee0db57a51d54bd1f87f8755b3d68604156a35b045b"
 
 [ "${1:-}" = "--force" ] && FORCE=1 || FORCE=""
 
-[ $UID -eq 0 ] || { echo "Root required"; exit 1; }
+[ $UID -eq 0 ] || {
+  echo "Root required"
+  exit 1
+}
 
 # Install Ruby and Bundler if they are missing or the force flag is set
-if [ -n "$FORCE" ] || ! command -v ruby > /dev/null; then
+if [ -n "$FORCE" ] || ! command -v ruby >/dev/null; then
   # Dependency list:
   # - wget: to fetch Ruby and pretty useful anyway
   # - gcc & make: to compile Ruby
